@@ -30,10 +30,16 @@ background-image: url("data:image/svg+xml,%3Csvg width='70' height='70' viewBox=
 
 .results-container{
   height: 550px;
+  overflow: auto;
   width: 70%;
   margin: 0 15%;  
-  background-color: white;
+  background-color:#e3e0e7;
   justify-content: center;
   align-items: center;
+  display: flex;
+  flex-wrap: wrap;
 }
 
+.gif{
+  margin: 1em;
+}
