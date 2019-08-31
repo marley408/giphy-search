@@ -1,6 +1,14 @@
 import React, {useEffect, useState} from 'react'
 
-const Results = () => {
+const renderResults = (array) =>{
+  return array.map(gif => {
+    return(<div className='gif' key={gif.id}>
+    <img alt='gif' src={gif.images.fixed_height.url} />
+  </div>)
+  })
+}
+
+const Results = ({results}) => {
 
   const [trendingGifs, setTrendingGifs] = useState([])
   console.log(trendingGifs)
@@ -18,15 +26,12 @@ const Results = () => {
     fetchTrendingGifs()
   }, [])
 
+
+
+  
   return (
     <div className='results-container' >
-      {trendingGifs.map(gif =>{
-        return(
-        <div className='gif' key={gif.id}>
-          <img alt='gif' src={gif.images.fixed_height.url} />
-        </div>
-        )
-      })}
+      {results.length ? renderResults(results) : renderResults(trendingGifs)}
     </div>
   )
 }

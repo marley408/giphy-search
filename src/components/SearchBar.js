@@ -2,16 +2,19 @@ import React, {useState, useRef} from 'react'
 import '../App.css';
 
 
-const SearchBar = () => {
+const SearchBar = ({setResults}) => {
 
-  const [searchGif, setSearchGif] = useState('')
-  const [isSearchClicked, setIsSearchClicked] = useState(false)
   const searchInput = useRef(null)
 
-  const handleSearchButton = (e) => {
+  const handleSearchButton = async (e) => {
+    if(searchInput.current.value === ''){
+      return;
+    }
     e.preventDefault()
-    setSearchGif(searchInput.current.value)
-    setIsSearchClicked(true)
+
+    const res = await fetch(`http://api.giphy.com/v1/gifs/search?q=${searchInput.current.value}&api_key=qKA0xNCx1jDl9sK7kz6UObcKKTCBRk3y&limit=30`)
+    const data = await res.json()
+    setResults(data.data)
     searchInput.current.value = ''
   }
 
