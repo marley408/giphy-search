@@ -1,17 +1,33 @@
 import React, {useEffect, useState} from 'react'
 
+// function for rendering gifs in the gif container
 const renderResults = (array) =>{
   return array.map(gif => {
-    return(<div className='gif' key={gif.id}>
+    return(<div onClick={(e) => clickedGif(e, gif.images)} className='gif' key={gif.id}>
     <img alt='gif' src={gif.images.fixed_height.url} />
   </div>)
   })
 }
 
+// when gif is clicked it will be "paused" or replaced by its still image
+const clickedGif = (e, { fixed_height_still, fixed_height }) => {
+
+  const clickedGif = e.target
+
+  clickedGif.src = clickedGif.src === fixed_height_still.url ? fixed_height.url : fixed_height_still.url
+
+  console.log(clickedGif)
+
+}
+
+
+
+
 const Results = ({results}) => {
 
   const [trendingGifs, setTrendingGifs] = useState([])
   console.log(trendingGifs)
+
 
 
   useEffect(() => {
