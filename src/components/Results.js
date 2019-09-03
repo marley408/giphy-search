@@ -16,7 +16,6 @@ const clickedGif = (e, { fixed_height_still, fixed_height }) => {
 
   clickedGif.src = clickedGif.src === fixed_height_still.url ? fixed_height.url : fixed_height_still.url
 
-  console.log(clickedGif)
 
 }
 
@@ -26,7 +25,6 @@ const clickedGif = (e, { fixed_height_still, fixed_height }) => {
 const Results = ({results}) => {
 
   const [trendingGifs, setTrendingGifs] = useState([])
-  console.log(trendingGifs)
 
 
 
@@ -34,7 +32,6 @@ const Results = ({results}) => {
     const fetchTrendingGifs = async () => {
       const res = await fetch('https://api.giphy.com/v1/gifs/trending?api_key=qKA0xNCx1jDl9sK7kz6UObcKKTCBRk3y&limit=30&rating=G')
       const data = await res.json();
-      console.log(data)
       
       setTrendingGifs(data.data)
     }
