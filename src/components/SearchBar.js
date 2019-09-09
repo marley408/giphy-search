@@ -1,5 +1,6 @@
 import React, { useRef} from 'react'
 import '../App.css';
+require('dotenv').config()
 
 
 const SearchBar = ({setResults}) => {
